@@ -46,8 +46,8 @@ class ServicePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(0.0),
         child: Container(
           margin: EdgeInsets.all(10),
           child: Column(
@@ -57,27 +57,27 @@ class ServicePage extends StatelessWidget {
                 height: 300,
                 width: 100,
                 color: Colors.black12,
-                child: Image.asset(
-                    'https://drive.google.com/drive/folders/1e1zhEJ_IUs-CSEg_8GIcmZAXxVsSFaf2?usp=sharing'),
+                child: Image.network(
+                    'https://d2v80xjmx68n4w.cloudfront.net/gigs/OUf1c1649499417.jpg',
+                    fit: BoxFit.cover),
               ),
               Container(
-                  height: 60,
-                  width: 200,
-                  color: Colors.white,
-                  margin: EdgeInsets.only(top: 20),
+                height: null,
+                width: 600,
+                color: Colors.white,
+                margin: EdgeInsets.only(top: 10),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: "글자를 입력해 주세요.",
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.edit),
-                        )),
-                  )),
+                      fillColor: Colors.blue,
+                      border: InputBorder.none,
+                      hintText: "내용을 입력하세요.",
+                    ),
+                    maxLines: null,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
