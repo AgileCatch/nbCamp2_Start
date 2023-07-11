@@ -105,8 +105,9 @@ class MyHomePage extends StatelessWidget {
             //카드위젯 만드는부분
             Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 238, 186),
-                  borderRadius: BorderRadius.circular(30)),
+                color: Color.fromARGB(255, 255, 238, 186),
+                borderRadius: BorderRadius.circular(30),
+              ),
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 170,
