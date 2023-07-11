@@ -22,23 +22,32 @@ class ServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Row(
-          children: [
-            SizedBox(width: 16),
-            Text(
-              'back',
-              style: TextStyle(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Row(
+            children: [
+              SizedBox(width: 16),
+              Icon(
+                Icons.arrow_back,
                 color: Colors.black,
-                fontWeight: FontWeight.normal,
-                fontSize: 17,
+                size: 35,
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.done,
+                color: Colors.black,
+                size: 35,
               ),
             ),
           ],
         ),
-      ),
-    );
+        body: Column(
+          children: [TextField()],
+        ));
   }
 }
