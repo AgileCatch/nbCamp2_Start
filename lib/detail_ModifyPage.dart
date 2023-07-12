@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/Util/colorList.dart';
 
 class DetailModifyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorList().background,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         //뒤로가기 버튼
         leading: Padding(
-          padding: const EdgeInsets.only(left: 8),
-          child: Icon(
-            Icons.arrow_back,
-            size: 30,
-            color: Colors.black,
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.backspace,
+              size: 30,
+              color: ColorList().gray,
+            ),
           ),
         ),
         //저장하기 버튼
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 16),
             child: IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.save,
-                  color: Colors.black,
+                  Icons.check,
+                  color: ColorList().gray,
                   size: 30,
                 )),
           )
@@ -53,8 +58,9 @@ class DetailModifyPage extends StatelessWidget {
                   bottom: 0,
                   right: 0,
                   child: Icon(
-                    Icons.camera_alt,
-                    size: 45,
+                    Icons.add_a_photo,
+                    size: 60,
+                    color: ColorList().gray,
                   ),
                 ),
               ],
@@ -66,7 +72,7 @@ class DetailModifyPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 16,
+                  width: 25,
                 ),
                 Text(
                   "푸 바 오",
@@ -75,55 +81,18 @@ class DetailModifyPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  width: 3,
-                ),
                 Icon(
-                  Icons.edit_note,
+                  Icons.edit,
                   size: 25,
+                  color: ColorList().gray,
                 )
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
-
-            //기능 색 변하게 바꿀 예정
-            // Text(
-            //   "이 름",
-            //   style: TextStyle(
-            //     fontSize: 18,
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            // ),
-            // TextField(
-            //   decoration: InputDecoration(
-            //     border: OutlineInputBorder(),
-            //     hintText: "이름을 입력하세요",
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 15,
-            // ),
-
-            // Text(
-            //   "닉네임",
-            //   style: TextStyle(
-            //     fontSize: 18,
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            // ),
-            // TextField(
-            //   decoration: InputDecoration(
-            //     border: OutlineInputBorder(),
-            //     hintText: "닉네임을 입력하세요",
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 15,
-            // ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(left: 16, right: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -135,7 +104,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -144,7 +113,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "생년월일",
@@ -154,7 +123,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -163,7 +132,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "이메일 주소",
@@ -173,7 +142,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -182,7 +151,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "사는 곳",
@@ -192,7 +161,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -201,7 +170,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "MBTI",
@@ -211,7 +180,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -220,7 +189,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "좋아하는 것",
@@ -230,7 +199,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -239,7 +208,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 16,
                   ),
                   Text(
                     "취미",
@@ -249,7 +218,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 4,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -258,7 +227,7 @@ class DetailModifyPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 40,
                   ),
                 ],
               ),
