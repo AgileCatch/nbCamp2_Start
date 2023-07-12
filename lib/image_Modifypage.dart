@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detailPage.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/image_Modifypage.dart';
 
+import 'detailPage.dart';
 import 'image_DetailPage.dart';
 
 // 이미지 수정 및 저장 페이지
