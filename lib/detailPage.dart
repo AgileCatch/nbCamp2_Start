@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/main.dart';
 
-import 'detail_ModifyPage.dart';
+void main() => runApp(MyApp());
 
-class DetailPage extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'detailPage',
+      home: MyPage(),
+    );
+  }
+}
+
+class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
@@ -59,7 +70,7 @@ class DetailPage extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-    ); // 타이틀
+    );
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -78,6 +89,10 @@ class DetailPage extends StatelessWidget {
           ),
           onPressed: () {
             print('back button is clicked');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
+            );
           },
         ),
         actions: [
@@ -88,12 +103,13 @@ class DetailPage extends StatelessWidget {
               size: 35,
             ),
             onPressed: () {
-              print('modify button is clicked');
+              print('back button is clicked');
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (_) => DetailModifyPage()), //수정페이지로 이동
               );
+              print('modify button is clicked');
             },
           ),
           SizedBox(
@@ -129,7 +145,6 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  //여기서부터 정보 수정반영되는 곳
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
@@ -354,6 +369,13 @@ class DetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Image.network(
+                      'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                      width: 400,
+                      height: 200),
                 ),
               ],
             ),
