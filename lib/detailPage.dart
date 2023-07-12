@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/main.dart';
 
+import 'image_DetailPage.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -371,11 +373,26 @@ class MyPage extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
-                  child: Image.network(
-                      'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                      width: 400,
-                      height: 200),
+                  onTap: () {
+                    //사진 누르면 ImageDetailPage로 이동
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => ImageDetailPage()),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.network(
+                          'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                          width: 180,
+                          height: 200),
+                      Spacer(flex: 2),
+                      Image.network(
+                          'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                          width: 180,
+                          height: 200),
+                    ],
+                  ),
                 ),
               ],
             ),
