@@ -29,6 +29,7 @@ class ServicePage extends StatelessWidget {
           children: [
             SizedBox(width: 16),
             Icon(
+              // 뒤로가기
               Icons.arrow_back,
               color: Colors.black,
               size: 35,
@@ -37,6 +38,7 @@ class ServicePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            // 저장버튼
             onPressed: () {},
             icon: Icon(
               Icons.done,
@@ -47,6 +49,7 @@ class ServicePage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        // 스크롤
         padding: const EdgeInsets.all(0.0),
         child: Container(
           margin: EdgeInsets.all(10),
@@ -54,6 +57,7 @@ class ServicePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
+                //이미지 추가부분
                 height: 300,
                 width: 100,
                 color: Colors.black12,
@@ -62,6 +66,7 @@ class ServicePage extends StatelessWidget {
                     fit: BoxFit.cover),
               ),
               Container(
+                //텍스트 공간
                 height: null,
                 width: 600,
                 color: Colors.white,
