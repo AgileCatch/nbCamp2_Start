@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'detail_ModifyPage.dart';
 
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'detailPage',
-      home: MyPage(),
-    );
-  }
-}
-
-class MyPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
@@ -68,7 +59,7 @@ class MyPage extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-    );
+    ); // 타이틀
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -98,6 +89,11 @@ class MyPage extends StatelessWidget {
             ),
             onPressed: () {
               print('modify button is clicked');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+              );
             },
           ),
           SizedBox(
@@ -133,6 +129,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Container(
+                  //여기서부터 정보 수정반영되는 곳
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
