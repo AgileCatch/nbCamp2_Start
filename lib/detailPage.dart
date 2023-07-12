@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
 
-void main() => runApp(detailPage());
+import 'detail_ModifyPage.dart';
 
-class detailPage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'detailPage',
-      home: MyPage(),
-    );
-  }
-}
-
-class MyPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
