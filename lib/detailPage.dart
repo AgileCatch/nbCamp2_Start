@@ -78,7 +78,7 @@ class MyPage extends StatelessWidget {
         title: Text(''),
         elevation: 0,
         backgroundColor: Colors.white,
-        leadingWidth: 16,
+        leadingWidth: 65,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -100,6 +100,9 @@ class MyPage extends StatelessWidget {
               print('modify button is clicked');
             },
           ),
+          SizedBox(
+            width: 14,
+          )
         ],
       ),
       body: SingleChildScrollView(

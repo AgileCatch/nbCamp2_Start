@@ -4,7 +4,7 @@
             "outputFile": "com.example.ewaidle.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\test\\nbCamp2\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\test\\nbCamp2_Start\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
