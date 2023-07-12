@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/main.dart';
 
 void main() => runApp(MyApp());
 
@@ -87,6 +89,10 @@ class MyPage extends StatelessWidget {
           ),
           onPressed: () {
             print('back button is clicked');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
+            );
           },
         ),
         actions: [
@@ -97,6 +103,12 @@ class MyPage extends StatelessWidget {
               size: 35,
             ),
             onPressed: () {
+              print('back button is clicked');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+              );
               print('modify button is clicked');
             },
           ),
@@ -357,6 +369,13 @@ class MyPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Image.network(
+                      'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                      width: 400,
+                      height: 200),
                 ),
               ],
             ),

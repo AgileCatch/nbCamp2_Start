@@ -7,7 +7,6 @@ import 'detailPage.dart';
 import 'package:introduce_myself/detailPage.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
