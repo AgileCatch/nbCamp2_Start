@@ -3,7 +3,6 @@ import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 void main() {
   runApp(MyApp());

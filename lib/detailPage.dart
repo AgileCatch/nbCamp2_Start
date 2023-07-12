@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(detailPage());
 
-class MyApp extends StatelessWidget {
+class detailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'detailPage',
@@ -68,7 +68,7 @@ class MyPage extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-    );
+    ); // 타이틀
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -133,6 +133,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Container(
+                  //여기서부터 정보 수정반영되는 곳
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
