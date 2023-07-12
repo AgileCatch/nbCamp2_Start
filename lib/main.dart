@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
+import 'dart:ui';
 
 void main() {
   runApp(MyApp());
@@ -65,7 +67,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorList().background, //앱바 색 지정
         elevation: 0,
         actions: [
           IconButton(
@@ -83,6 +85,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: ColorList().background, // 배경화면 색 지정
       body: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Column(
@@ -105,18 +108,58 @@ class MyHomePage extends StatelessWidget {
             //카드위젯 만드는부분
             Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 238, 186),
-                borderRadius: BorderRadius.circular(30),
+                color: ColorList().yellow,
+                borderRadius: BorderRadius.circular(45),
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 170,
-                  vertical: 60,
+                  horizontal: 10, //카드 가로여백
+                  vertical: 10, //카드 세로여백
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            //backgroundImage:  //Image.network(cardData.profile),
+                            radius: 45,
+                            backgroundColor: ColorList().gray,
+                          ), //프로필 이미지크기
+                          SizedBox(
+                            width: 37,
+                          ),
+                          Text(
+                            'NAME', //cardData.name,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      height: 10,
+                      color: const Color.fromARGB(255, 109, 109, 109),
+                      thickness: 0.5,
+                      //endIndent: 50,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'NICKNAME', //cardData.nickname,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Center(
-              child: Text('Home Page'),
             ),
           ],
         ),
@@ -124,12 +167,127 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-// SizedBox(
-              //   height: 130,
-              //   width: 360,
-              //   child: Card(
-              //     shape: ContinuousRectangleBorder(
-              //       borderRadius: BorderRadius.circular(60), //카드둥글기정도
-              //     ),
-              //   ),
-              // ),
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   List<CardData> cards = []; // 카드 목록
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         actions: [
+//           IconButton(
+//             icon: Icon(Icons.add),
+//             onPressed: () {
+//               setState(() {
+//                 // 플러스 아이콘 버튼이 눌렸을 때 카드 추가
+//                 cards.add(CardData());
+//               });
+//             },
+//           ),
+//         ],
+//       ),
+//       body: ListView.builder(
+//         itemCount: cards.length,
+//         itemBuilder: (context, index) {
+//           return CardWidget(cardData: cards[index]);
+//         },
+//       ),
+//     );
+//   }
+// 
+// class CardData {
+//   String profileImage = 'assets/profile.png'; // 프로필 사진 경로
+//   String name = '이름'; // 이름
+//   String nickname = 'Nickname'; // 닉네임
+// }
+// class CardWidget extends StatelessWidget {
+//   final CardData cardData;
+
+//   const CardWidget({Key? key, required this.cardData}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Dismissible(
+//       key: Key(cardData.hashCode.toString()), // 각 카드를 식별하기 위한 키
+//       background: Container(
+//         color: Colors.red,
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.end,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(12.0),
+//               child: Icon(
+//                 Icons.delete,
+//                 color: Colors.white,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       secondaryBackground: Container(
+//         color: Colors.green,
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.start,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(12.0),
+//               child: Icon(
+//                 Icons.edit,
+//                 color: Colors.white,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       child: Card(
+//         margin: EdgeInsets.all(16),
+//         child: Row(
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(16.0),
+//               child: CircleAvatar(
+//                 radius: 32,
+//                 backgroundImage: AssetImage(cardData.profileImage),
+//               ),
+//             ),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text(
+//                   cardData.name,
+//                   style: TextStyle(fontWeight: FontWeight.bold),
+//                 ),
+//                 SizedBox(height: 8),
+//                 Text(cardData.nickname),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//       confirmDismiss: (direction) async {
+//         if (direction == DismissDirection.endToStart) {
+//           // 삭제 아이콘 버튼을 스와이프하여 제거할 때
+//           return true;
+//         } else if (direction == DismissDirection.startToEnd) {
+//           // 수정 아이콘 버튼을 스와이프하여 수정할 때
+//           return false; // 수정 기능은 여기서 구현해야 함
+//         }
+//         return false;
+//       },
+//       onDismissed: (direction) {
+//         if (direction == DismissDirection.endToStart) {
+//           // 삭제 아이콘 버튼을 스와이프하여 제거할 때
+//           ScaffoldMessenger.of(context).showSnackBar(
+//             SnackBar(content: Text('Card removed')),
+//           );
+//           // 여기에서 해당 카드를 삭제하는 로직을 구현할 수 있습니다.
+//         }
+//       },
+//     );
+//   }
+// }
