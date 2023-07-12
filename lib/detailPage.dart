@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
 
 void main() => runApp(detailPage());
 
@@ -98,6 +99,11 @@ class MyPage extends StatelessWidget {
             ),
             onPressed: () {
               print('modify button is clicked');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+              );
             },
           ),
           SizedBox(

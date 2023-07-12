@@ -5,10 +5,10 @@ import 'package:lottie/lottie.dart';
 import 'dart:async';
 
 void main() {
-  runApp(MyApp());
+  runApp(detailPage());
 }
 
-class MyApp extends StatelessWidget {
+class detailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
