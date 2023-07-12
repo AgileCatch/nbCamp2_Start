@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:introduce_myself/Util/colorList.dart';
+import 'package:introduce_myself/Util/showToast.dart';
 
-class DetailModifyPage extends StatelessWidget {
+class DetailModifyPage extends StatefulWidget {
+  const DetailModifyPage({Key? key}) : super(key: key);
+
+  @override
+  _DetailModifyPage createState() => _DetailModifyPage();
+}
+
+class _DetailModifyPage extends State<DetailModifyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +22,9 @@ class DetailModifyPage extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              print("object");
+            },
             icon: Icon(
               Icons.backspace,
               size: 30,
@@ -26,7 +37,9 @@ class DetailModifyPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showToast('저장되었습니다');
+                },
                 icon: Icon(
                   Icons.check,
                   color: ColorList().gray,

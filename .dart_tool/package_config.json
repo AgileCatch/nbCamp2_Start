@@ -80,6 +80,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/soohyun/Documents/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -188,7 +200,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-12T06:08:12.411945Z",
+  "generated": "2023-07-12T06:42:56.800090Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }
