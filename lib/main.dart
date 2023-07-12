@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DetailModifyPage(),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/Util/showToast.dart';
 
@@ -10,6 +13,7 @@ class DetailModifyPage extends StatefulWidget {
 }
 
 class _DetailModifyPage extends State<DetailModifyPage> {
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +61,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
         child: Column(
           children: [
             Padding(padding: EdgeInsets.only(top: 40)),
+            Image.file(File()),
             //원형 사진 넣는 곳
             Stack(
               clipBehavior: Clip.none,
@@ -259,3 +264,5 @@ class _DetailModifyPage extends State<DetailModifyPage> {
     );
   }
 }
+
+class _ImagePickerScreenState extends 
