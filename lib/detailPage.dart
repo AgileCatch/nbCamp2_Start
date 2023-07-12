@@ -137,7 +137,7 @@ class MyPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: Colors.grey,
+                    color: const Color.fromARGB(255, 136, 136, 136),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -158,7 +158,7 @@ class MyPage extends StatelessWidget {
                 SizedBox(height: 0),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3),
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 136, 136, 136),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -192,7 +192,7 @@ class MyPage extends StatelessWidget {
                   height: 0,
                 ),
                 Container(
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 136, 136, 136),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   child: RichText(
                     text: TextSpan(
@@ -225,7 +225,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 136, 136, 136),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -257,7 +257,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 136, 136, 136),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -289,7 +289,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 136, 136, 136),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -323,7 +323,7 @@ class MyPage extends StatelessWidget {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: const Color.fromARGB(255, 136, 136, 136),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
