@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:introduce_myself/image_Modifypage.dart';
 
 import 'detailPage.dart';
+import 'package:introduce_myself/detailPage.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +25,14 @@ class MyApp extends StatelessWidget {
 }
 
 // 홈 페이지
-class ImageDetailPage extends StatelessWidget {
+class ImageDetailPage extends StatefulWidget {
   const ImageDetailPage({Key? key}) : super(key: key);
 
+  @override
+  State<ImageDetailPage> createState() => _ImageDetailPageState();
+}
+
+class _ImageDetailPageState extends State<ImageDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +79,9 @@ class ImageDetailPage extends StatelessWidget {
                       // 확인 버튼
                       TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          // index에 해당하는 항목 삭제
+                          Navigator.pop(context); // 팝업 닫기
+                          Navigator.pop(context); // MyPage 로 가기
                         },
                         child: Text(
                           "확인",
