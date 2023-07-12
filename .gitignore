@@ -5,6 +5,8 @@
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
 .dart_tool/pakage_config.json
 .dart_tool/pakage_subset
 .flutter-plugins
