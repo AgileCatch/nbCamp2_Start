@@ -12,14 +12,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ImageDetailPage(),
     );
   }
 }
 
 // 홈 페이지
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ImageDetailPage extends StatelessWidget {
+  const ImageDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,11 @@ class HomePage extends StatelessWidget {
             // 버튼 클릭시 이전 페이지로 이동
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => DetailPage()),
+              MaterialPageRoute(builder: (_) => ImageModifyPage()),
             );
           },
-          icon: Icon(CupertinoIcons.arrow_left, color: Colors.black),
+          icon:
+              Icon(Icons.backspace, color: Color.fromARGB(255, 136, 136, 136)),
         ),
         actions: [
           IconButton(
@@ -42,14 +43,14 @@ class HomePage extends StatelessWidget {
               // 버튼 클릭시 수정 페이지로 이동
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => DetailPage()),
+                MaterialPageRoute(builder: (_) => ImageModifyPage()),
               );
             },
-            icon: Icon(CupertinoIcons.scissors, color: Colors.black),
+            icon: Icon(Icons.edit, color: Color.fromARGB(255, 136, 136, 136)),
           ),
           IconButton(
             onPressed: () {
-              // 버튼 클릭시 삭제 페이지로 이동
+              // 버튼 클릭시 삭제 버튼 나옴
               showDialog(
                 context: context,
                 builder: (context) {
@@ -79,10 +80,10 @@ class HomePage extends StatelessWidget {
               );
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => DetailPage()),
+                MaterialPageRoute(builder: (_) => ImageDetailPage()),
               );
             },
-            icon: Icon(Icons.delete, color: Colors.black),
+            icon: Icon(Icons.delete, color: Color.fromARGB(255, 136, 136, 136)),
           ),
         ],
       ),
@@ -93,46 +94,61 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(right: 300),
+                  width: 200,
+                  height: 60,
+                  margin: EdgeInsets.only(
+                    right: 250,
+                  ),
                   //원하는 자리로 배치시키고 싶을 땐 margin을 이용하자!
-                  width: 80,
-                  height: 80,
                   child: Row(
                     children: [
-                      Image.network(
-                        "https://t3.ftcdn.net/jpg/05/11/52/90/360_F_511529094_PISGWTmlfmBu1g4nocqdVKaHBnzMDWrN.jpg",
-                        width: 50,
-                        height: 50,
+                      CircleAvatar(
+                        //원형 이미지 구현
+                        backgroundImage: NetworkImage(
+                            'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp'),
+                        backgroundColor: Colors.transparent,
+                        radius: 30,
                       ),
+                      SizedBox(width: 5),
                       Text(
                         "이름",
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          letterSpacing: 5, //글자 간 간격
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 0),
-                Image.network(
-                  "https://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
-                  width: 350,
-                  height: 300,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "내용을 입력하세요",
-                  ),
-                  maxLines: 7,
-                ),
+                SizedBox(height: 10),
                 Container(
-                  margin: EdgeInsets.only(left: 200),
+                  width: double.infinity,
+                  height: 300,
+                  child: Image.network(
+                    "http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
+                    width: double.infinity,
+                    height: 300,
+                  ),
+                ),
+                SizedBox(height: 0),
+                Container(
+                  height: 160,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "내용을 입력하세요",
+                    ),
+                    maxLines: 7,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  margin: EdgeInsets.only(left: 250),
                   child: Text(
                     "2023.7.11.21.00",
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -147,8 +163,10 @@ class HomePage extends StatelessWidget {
 }
 
 // 이미지 수정 및 저장 페이지
-class DetailPage extends StatelessWidget {
-  DetailPage({super.key});
+class ImageModifyPage extends StatelessWidget {
+  ImageModifyPage({
+    super.key,
+  });
 
   TextEditingController contentController = TextEditingController();
 
@@ -162,19 +180,20 @@ class DetailPage extends StatelessWidget {
             // 버튼 클릭시 이전 페이지로 이동
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => HomePage()),
+              MaterialPageRoute(builder: (_) => ImageDetailPage()),
             );
             Navigator.pop(context); // 팝업 닫기
-            Navigator.pop(context);
+            Navigator.pop(context); //ImageDetailPage로 이동
           },
-          icon: Icon(CupertinoIcons.arrow_left, color: Colors.black),
+          icon:
+              Icon(Icons.backspace, color: Color.fromARGB(255, 136, 136, 136)),
         ),
         actions: [
           IconButton(
             onPressed: () {
               // 저장 버튼 클릭시
             },
-            icon: Icon(Icons.save, color: Colors.black),
+            icon: Icon(Icons.check, color: Color.fromARGB(255, 136, 136, 136)),
           )
         ],
       ),
@@ -184,19 +203,33 @@ class DetailPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 80),
-                Image.network(
-                  "https://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
-                  width: 350,
+                Container(
+                  width: 200,
+                  height: 60,
+                ),
+                SizedBox(height: 10),
+                Container(
+                  width: double.infinity,
                   height: 300,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "내용을 입력하세요",
+                  child: Image.network(
+                    "http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
+                    width: double.infinity,
+                    height: 300,
                   ),
-                  maxLines: 7,
                 ),
+                SizedBox(height: 0),
+                Container(
+                  height: 160,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "내용을 입력하세요",
+                    ),
+                    maxLines: 7,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(),
               ],
             ),
           ),
