@@ -3,20 +3,22 @@ import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/main.dart';
 import 'package:provider/provider.dart';
 
+import 'image_DetailPage.dart';
 import 'service/servicePage.dart';
 
 class MyPage extends StatefulWidget {
   @override
   _MyPageState createState() => _MyPageState();
 }
-// class MyApp extends StatelessWidget {
-// Widget build(BuildContext context) {
-// return MaterialApp(
-// title: 'GridView Example',
-// home: MyPage(),
-// );
-// }
-// }
+
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'GridView Example',
+      home: MyPage(),
+    );
+  }
+}
 
 class _MyPageState extends State<MyPage> {
   List<String> gridItems = ['Item 1', 'Item 2', 'Item 3'];
@@ -400,11 +402,24 @@ class _MyPageState extends State<MyPage> {
                     crossAxisCount: 2,
                     children: List.generate(gridItems.length, (index) {
                       return Container(
-                        color: Colors.blue,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                "http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg"),
+                          ),
+                        ),
                         child: Center(
-                          child: Text(
-                            gridItems[index],
-                            style: TextStyle(color: Colors.white),
+                          child: IconButton(
+                            onPressed: () {
+                              // 버튼 클릭시 수정 페이지로 이동
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => ImageDetailPage()),
+                              );
+                            },
+                            icon: Icon(Icons.add,
+                                color: Color.fromARGB(255, 136, 136, 136)),
                           ),
                         ),
                       );
