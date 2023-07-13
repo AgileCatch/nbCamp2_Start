@@ -1,31 +1,6 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:introduce_myself/image_Modifypage.dart';
 
-import 'detailPage.dart';
-import 'package:introduce_myself/detailPage.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
-
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ImageDetailPage(),
-    );
-  }
-}
-
-// 홈 페이지
 class ImageDetailPage extends StatefulWidget {
   const ImageDetailPage({Key? key}) : super(key: key);
 
@@ -42,10 +17,10 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
         leading: IconButton(
           onPressed: () {
             // 버튼 클릭시 이전 페이지로 이동
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => MyPage()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (_) => DetailPage()),
+            // );
           },
           icon:
               Icon(Icons.backspace, color: Color.fromARGB(255, 136, 136, 136)),
@@ -80,9 +55,9 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                       // 확인 버튼
                       TextButton(
                         onPressed: () {
-                          // index에 해당하는 항목 삭제
+                          print('사진 삭제 됨');
                           Navigator.pop(context); // 팝업 닫기
-                          Navigator.pop(context); // MyPage 로 가기
+                          Navigator.pop(context); // 이전 페이지로 가기
                         },
                         child: Text(
                           "확인",
@@ -92,10 +67,6 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                     ],
                   );
                 },
-              );
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => ImageDetailPage()),
               );
             },
             icon: Icon(Icons.delete, color: Color.fromARGB(255, 136, 136, 136)),
@@ -176,4 +147,3 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
     );
   }
 }
-

@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/Util/showToast.dart';
+import 'package:introduce_myself/detailPage.dart';
+import 'package:introduce_myself/service/servicePage.dart';
+import 'package:provider/provider.dart';
 
-class DetailModifyPage extends StatefulWidget {
-  const DetailModifyPage({Key? key}) : super(key: key);
+class DetailModifyPage extends StatelessWidget {
+  DetailModifyPage({super.key, required this.index, required this.isCreat});
 
-  @override
-  State<StatefulWidget> createState() => _DetailModifyPage();
-}
+  final int index;
+  final bool isCreat;
 
-class _DetailModifyPage extends State<DetailModifyPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  // final List<String> memoList;
+  // final int index;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController nicknameController = TextEditingController();
+  final TextEditingController dateController = TextEditingController();
+  final TextEditingController emailaddressController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController likeController = TextEditingController();
+  final TextEditingController mbtiController = TextEditingController();
+  final TextEditingController hobbyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    //use Service에 있는 내용- 프로바이더 적용
+    UserService userService = context.read<UserService>();
+    User user = userService.userList[index];
+
     return Scaffold(
       backgroundColor: ColorList().background,
       appBar: AppBar(
@@ -27,7 +38,11 @@ class _DetailModifyPage extends State<DetailModifyPage> {
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              isCreat
+                  ? userService
+                      .removeItem(index: index)
+                      .then(Navigator.pop(context))
+                  : Navigator.pop(context);
               print("object");
             },
             icon: Icon(
@@ -43,6 +58,23 @@ class _DetailModifyPage extends State<DetailModifyPage> {
             padding: const EdgeInsets.only(right: 16),
             child: IconButton(
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      //원래는 디테일페이지로 가야하는데 경로확인하려고 수정페이지로 감
+                      builder: (_) => MyPage(),
+                    ),
+                  );
+                  userService.updateItem(
+                      index: index,
+                      address: addressController.text,
+                      date: dateController.text,
+                      emailaddress: emailaddressController.text,
+                      hobby: hobbyController.text,
+                      like: likeController.text,
+                      mbti: mbtiController.text,
+                      name: nameController.text,
+                      nickname: nicknameController.text);
                   showToast('저장되었습니다');
                 },
                 icon: Icon(
@@ -94,9 +126,9 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                   width: 25,
                 ),
                 Text(
-                  "푸 바 오",
+                  "이름",
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -127,7 +159,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
-                      // controller: editData,
+                      controller: nicknameController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "닉네임을 입력하세요",
@@ -147,6 +179,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: dateController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "생년월일을 입력하세요",
@@ -166,6 +199,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: emailaddressController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "이메일 주소를 입력하세요",
@@ -185,6 +219,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: addressController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "닉네임을 입력하세요",
@@ -204,6 +239,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: mbtiController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "MBTI를 입력하세요",
@@ -223,6 +259,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: likeController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "좋아하는 것을 입력하세요",
@@ -242,6 +279,7 @@ class _DetailModifyPage extends State<DetailModifyPage> {
                       height: 4,
                     ),
                     TextField(
+                      controller: hobbyController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "취미를 입력하세요",
