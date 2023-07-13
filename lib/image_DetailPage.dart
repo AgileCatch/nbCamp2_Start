@@ -6,7 +6,7 @@ import 'package:introduce_myself/image_Modifypage.dart';
 import 'detailPage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ImageDetailPage());
 }
 
 class MyApp extends StatelessWidget {

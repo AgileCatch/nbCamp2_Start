@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/image_AddPage.dart';
 import 'package:introduce_myself/main.dart';
 
 import 'image_DetailPage.dart';
@@ -76,7 +77,12 @@ class MyPage extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => ImageAddPage()),
+          );
+        },
       ),
       appBar: AppBar(
         title: Text(''),

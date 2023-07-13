@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detailPage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ImageAddPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ImageAddPage extends StatelessWidget {
+  const ImageAddPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ServicePage(),
+      home: MyAddPage(),
     );
   }
 }
 
-class ServicePage extends StatelessWidget {
-  const ServicePage({super.key});
+class MyAddPage extends StatelessWidget {
+  const MyAddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +26,23 @@ class ServicePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: Icon(
-                // 뒤로가기 버튼
-                Icons.backspace,
-                color: Colors.grey,
-                size: 30,
-              ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: IconButton(
+            icon: Icon(
+              Icons.backspace,
+              color: Colors.grey,
+              size: 30,
             ),
-          ],
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => MyApp()),
+              );
+            },
+          ),
         ),
-        leadingWidth: 100,
         actions: [
-          // 저장 버튼
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
