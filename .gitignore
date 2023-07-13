@@ -47,6 +47,9 @@ gen-external-apklibs
 
 # Files and directories created by pub
 .dart_tool/
+.dart_tool/package_config.json
+.dart_tool/package_config_subset
+
 .packages
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
@@ -96,6 +99,7 @@ lib/generated_plugin_registrant.dart
 **/android/key.properties
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
