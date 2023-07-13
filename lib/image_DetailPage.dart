@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detailPage.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
+
 import 'package:introduce_myself/image_Modifypage.dart';
 
+import 'detailPage.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(const ImageDetailPage());
 }
 
 class MyApp extends StatelessWidget {
@@ -75,9 +76,9 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                       // 확인 버튼
                       TextButton(
                         onPressed: () {
-                          // index에 해당하는 항목 삭제
+                          print('사진 삭제 됨');
                           Navigator.pop(context); // 팝업 닫기
-                          Navigator.pop(context); // MyPage 로 가기
+                          Navigator.pop(context); // 이전 페이지로 가기
                         },
                         child: Text(
                           "확인",
@@ -87,10 +88,6 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                     ],
                   );
                 },
-              );
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => ImageDetailPage()),
               );
             },
             icon: Icon(Icons.delete, color: Color.fromARGB(255, 136, 136, 136)),

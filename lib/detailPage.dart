@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/image_AddPage.dart';
+import 'package:introduce_myself/main.dart';
+
+import 'image_DetailPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,37 +77,54 @@ class MyPage extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => ImageAddPage()),
+          );
+        },
       ),
       appBar: AppBar(
         title: Text(''),
         elevation: 0,
         backgroundColor: Colors.white,
-        leadingWidth: 65,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 35,
-          ),
-          onPressed: () {
-            print('back button is clicked');
-          },
-        ),
-        actions: [
-          IconButton(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
             icon: Icon(
-              Icons.edit,
-              color: Colors.black,
-              size: 35,
+              Icons.backspace,
+              color: const Color.fromARGB(255, 136, 136, 136),
+              size: 30,
             ),
             onPressed: () {
-              print('modify button is clicked');
+              print('back button is clicked');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
+              );
             },
           ),
-          SizedBox(
-            width: 14,
-          )
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              icon: Icon(
+                Icons.edit,
+                color: const Color.fromARGB(255, 136, 136, 136),
+                size: 30,
+              ),
+              onPressed: () {
+                print('back button is clicked');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                );
+                print('modify button is clicked');
+              },
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -137,7 +159,7 @@ class MyPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -158,7 +180,7 @@ class MyPage extends StatelessWidget {
                 SizedBox(height: 0),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3),
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -192,7 +214,7 @@ class MyPage extends StatelessWidget {
                   height: 0,
                 ),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   child: RichText(
                     text: TextSpan(
@@ -225,7 +247,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -257,7 +279,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -289,7 +311,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -323,7 +345,7 @@ class MyPage extends StatelessWidget {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
@@ -356,6 +378,28 @@ class MyPage extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    //사진 누르면 ImageDetailPage로 이동
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => ImageDetailPage()),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.network(
+                          'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                          width: 180,
+                          height: 200),
+                      Spacer(flex: 2),
+                      Image.network(
+                          'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                          width: 180,
+                          height: 200),
+                    ],
                   ),
                 ),
               ],
