@@ -64,44 +64,42 @@ class MyAddPage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          margin: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  // 이미지 추가부분 어떻게?
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      "https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/yirR71673678500.jpg",
-                    ),
-                    fit: BoxFit.cover,
+        child: Column(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    "https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/yirR71673678500.jpg",
                   ),
+                  fit: BoxFit.cover,
                 ),
-                height: 300, // 이미지 추가칸 설정
-                width: 100,
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 60),
               ),
-              Container(
-                //텍스트 공간
-                height: null,
-                width: 10,
-                color: Colors.white,
+              height: 300,
+              width: 360,
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 60),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
                 child: TextField(
-                  style: TextStyle(fontSize: 25),
+                  controller: TextEditingController(),
                   decoration: InputDecoration(
-                    fillColor: Colors.blue,
                     border: InputBorder.none,
                     hintText: "내용을 입력하세요.",
                   ),
-                  autofocus: true,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                   maxLines: null,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
