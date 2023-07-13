@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/image_AddPage.dart';
-import 'package:introduce_myself/main.dart';
 
-import 'image_DetailPage.dart';
-
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'detailPage',
+      title: 'GridView Example',
       home: MyPage(),
     );
   }
 }
 
-class MyPage extends StatelessWidget {
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  List<String> gridItems = ['Item 1', 'Item 2', 'Item 3'];
+
+  void addItemToGrid() {
+    setState(() {
+      int itemCount = gridItems.length;
+      gridItems.add('Item ${itemCount + 1}');
+    });
+  }
+
   Widget build(BuildContext context) {
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
@@ -83,6 +96,7 @@ class MyPage extends StatelessWidget {
             MaterialPageRoute(builder: (_) => ImageAddPage()),
           );
         },
+        child: Icon(Icons.add),
       ),
       appBar: AppBar(
         title: Text(''),
@@ -98,8 +112,7 @@ class MyPage extends StatelessWidget {
             ),
             onPressed: () {
               print('back button is clicked');
-              Navigator.pop(context // 메인화면으로 이동
-                  );
+              Navigator.pop(context);
             },
           ),
         ),
@@ -116,8 +129,7 @@ class MyPage extends StatelessWidget {
                 print('back button is clicked');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                  MaterialPageRoute(builder: (_) => DetailModifyPage()),
                 );
                 print('modify button is clicked');
               },
@@ -378,27 +390,22 @@ class MyPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    //사진 누르면 ImageDetailPage로 이동
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => ImageDetailPage()),
+                SizedBox(height: 0),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  children: List.generate(gridItems.length, (index) {
+                    return Container(
+                      color: Colors.blue,
+                      child: Center(
+                        child: Text(
+                          gridItems[index],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     );
-                  },
-                  child: Row(
-                    children: [
-                      Image.network(
-                          'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                          width: 180,
-                          height: 200),
-                      Spacer(flex: 2),
-                      Image.network(
-                          'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
-                          width: 180,
-                          height: 200),
-                    ],
-                  ),
+                  }),
                 ),
               ],
             ),
