@@ -94,6 +94,7 @@ class UserService extends ChangeNotifier {
     required String like,
     required String mbti,
     required String hobby,
+    required String content,
   }) {
     User user = User(
         photo: photo,

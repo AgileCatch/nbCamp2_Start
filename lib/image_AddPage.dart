@@ -19,10 +19,10 @@ class ImageAddPAge extends StatelessWidget {
               size: 30,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => MyHomePage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   // MaterialPageRoute(builder: (_) => MyHomePage(index: null, isCreat: null,)),
+              // );
             },
           ),
         ),
