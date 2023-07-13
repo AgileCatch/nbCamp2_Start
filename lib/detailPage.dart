@@ -401,7 +401,7 @@ class _MyPageState extends State<MyPage> {
                       child: Center(
                         child: Text(
                           gridItems[index],
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white), //그리드뷰 형태
                         ),
                       ),
                     );
