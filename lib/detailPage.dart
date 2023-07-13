@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/image_AddPage.dart';
+import 'package:introduce_myself/main.dart';
+
+import 'image_DetailPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,7 +77,12 @@ class MyPage extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => ImageAddPage()),
+          );
+        },
       ),
       appBar: AppBar(
         title: Text(''),
@@ -87,6 +97,10 @@ class MyPage extends StatelessWidget {
           ),
           onPressed: () {
             print('back button is clicked');
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
+            );
           },
         ),
         actions: [
@@ -97,6 +111,12 @@ class MyPage extends StatelessWidget {
               size: 35,
             ),
             onPressed: () {
+              print('back button is clicked');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+              );
               print('modify button is clicked');
             },
           ),
@@ -356,6 +376,28 @@ class MyPage extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    //사진 누르면 ImageDetailPage로 이동
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => ImageDetailPage()),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.network(
+                          'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                          width: 180,
+                          height: 200),
+                      Spacer(flex: 2),
+                      Image.network(
+                          'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                          width: 180,
+                          height: 200),
+                    ],
                   ),
                 ),
               ],
