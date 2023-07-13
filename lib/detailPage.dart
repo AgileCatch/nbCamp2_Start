@@ -80,25 +80,11 @@ class MyPage extends StatelessWidget {
         title: Text(''),
         elevation: 0,
         backgroundColor: Colors.white,
-        leadingWidth: 65,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 35,
-          ),
-          onPressed: () {
-            print('back button is clicked');
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
-            );
-          },
-        ),
-        actions: [
-          IconButton(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
             icon: Icon(
-              Icons.edit,
+              Icons.backspace,
               color: Colors.black,
               size: 35,
             ),
@@ -106,15 +92,31 @@ class MyPage extends StatelessWidget {
               print('back button is clicked');
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
               );
-              print('modify button is clicked');
             },
           ),
-          SizedBox(
-            width: 14,
-          )
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              icon: Icon(
+                Icons.edit,
+                color: Colors.black,
+                size: 35,
+              ),
+              onPressed: () {
+                print('back button is clicked');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                );
+                print('modify button is clicked');
+              },
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
