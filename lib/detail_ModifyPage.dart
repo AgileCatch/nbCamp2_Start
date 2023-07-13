@@ -31,6 +31,7 @@ class DetailModifyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //use Service에 있는 내용- 프로바이더 적용
     UserService userService = context.read<UserService>();
     User user = userService.cardList[index];
 

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';

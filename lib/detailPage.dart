@@ -1,37 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
-import 'package:introduce_myself/main.dart';
-import 'package:introduce_myself/service/servicePage.dart';
-import 'package:provider/provider.dart';
 
-import 'image_DetailPage.dart';
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
 
-// class DetailPage extends StatefulWidget {
-//   const DetailPage({super.key});
+class _MyPageState extends State<MyPage> {
+  List<String> gridItems = ['Item 1', 'Item 2', 'Item 3'];
 
-//   @override
-//   State<DetailPage> createState() => _DetailPageState();
-// }
-
-// class _DetailPageState extends State<DetailPage> {
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'detailPage',
-//       home: MyPage(),
-//     );
-//   }
-// }
-
-class DetailPage extends StatelessWidget {
-  DetailPage({super.key, required this.index});
-
-  final int index;
-
-  TextEditingController contentController = TextEditingController();
+  void addItemToGrid() {
+    setState(() {
+      int itemCount = gridItems.length;
+      gridItems.add('Item ${itemCount + 1}');
+    });
+  }
 
   Widget build(BuildContext context) {
-    UserService userService = context.read<UserService>();
-    User user = userService.cardList[index];
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
       style: TextStyle(
@@ -91,50 +75,51 @@ class DetailPage extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (_) => ImageAddPage()),
+          // );
+        },
+        child: Icon(Icons.add),
       ),
       appBar: AppBar(
         title: Text(''),
         elevation: 0,
         backgroundColor: Colors.white,
-        leadingWidth: 65,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 35,
-          ),
-          onPressed: () {
-            print('back button is clicked');
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
-            );
-          },
-        ),
-        actions: [
-          IconButton(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
             icon: Icon(
-              Icons.edit,
-              color: Colors.black,
-              size: 35,
+              Icons.backspace,
+              color: const Color.fromARGB(255, 136, 136, 136),
+              size: 30,
             ),
             onPressed: () {
               print('back button is clicked');
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //       builder: (_) => DetailModifyPage(
-              //             index: memoList.length - 1,
-              //             memoList: memoList,
-              //           )), //수정페이지로 이동
-              // );
-              print('modify button is clicked');
+              Navigator.pop(context);
             },
           ),
-          SizedBox(
-            width: 14,
-          )
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              icon: Icon(
+                Icons.edit,
+                color: const Color.fromARGB(255, 136, 136, 136),
+                size: 30,
+              ),
+              onPressed: () {
+                print('back button is clicked');
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (_) => DetailModifyPage(index: )),
+                // );
+                print('modify button is clicked');
+              },
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -159,7 +144,7 @@ class DetailPage extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    contentController as String,
+                    '이   름',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -169,7 +154,7 @@ class DetailPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -190,7 +175,7 @@ class DetailPage extends StatelessWidget {
                 SizedBox(height: 0),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3),
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -224,7 +209,7 @@ class DetailPage extends StatelessWidget {
                   height: 0,
                 ),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   child: RichText(
                     text: TextSpan(
@@ -257,7 +242,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -276,6 +261,7 @@ class DetailPage extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
+                          text: '대한민국',
                           style: TextStyle(
                             fontSize: 20,
                             letterSpacing: 3,
@@ -288,7 +274,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -320,7 +306,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -354,7 +340,7 @@ class DetailPage extends StatelessWidget {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
@@ -389,27 +375,22 @@ class DetailPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    //사진 누르면 ImageDetailPage로 이동
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => ImageDetailPage()),
+                SizedBox(height: 0),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  children: List.generate(gridItems.length, (index) {
+                    return Container(
+                      color: Colors.blue,
+                      child: Center(
+                        child: Text(
+                          gridItems[index],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     );
-                  },
-                  child: Row(
-                    children: [
-                      Image.network(
-                          'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                          width: 180,
-                          height: 200),
-                      Spacer(flex: 2),
-                      Image.network(
-                          'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
-                          width: 180,
-                          height: 200),
-                    ],
-                  ),
+                  }),
                 ),
               ],
             ),
