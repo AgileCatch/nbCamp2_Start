@@ -1,32 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/Util/showToast.dart';
-import 'package:introduce_myself/detailPage.dart';
 import 'package:introduce_myself/service/servicePage.dart';
 import 'package:provider/provider.dart';
 
-class DetailModifyPage extends StatelessWidget {
+class DetailModifyPage extends StatefulWidget {
   DetailModifyPage({super.key, required this.index, required this.isCreat});
 
   final int index;
   final bool isCreat;
 
+  @override
+  State<DetailModifyPage> createState() => _DetailModifyPageState();
+}
+
+class _DetailModifyPageState extends State<DetailModifyPage> {
   // final List<String> memoList;
-  // final int index;
   final TextEditingController nameController = TextEditingController();
+
   final TextEditingController nicknameController = TextEditingController();
+
   final TextEditingController dateController = TextEditingController();
+
   final TextEditingController emailaddressController = TextEditingController();
+
   final TextEditingController addressController = TextEditingController();
+
   final TextEditingController likeController = TextEditingController();
+
   final TextEditingController mbtiController = TextEditingController();
+
   final TextEditingController hobbyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //use Service에 있는 내용- 프로바이더 적용
     UserService userService = context.read<UserService>();
-    User user = userService.userList[index];
+    User user = userService.userList[widget.index];
+
+    nameController.text = user.name;
+    nicknameController.text = user.nickname;
+    dateController.text = user.date;
+    emailaddressController.text = user.emailaddress;
+    addressController.text = user.address;
+    likeController.text = user.like;
+    mbtiController.text = user.mbti;
+    hobbyController.text = user.hobby;
 
     return Scaffold(
       backgroundColor: ColorList().background,
@@ -38,12 +57,12 @@ class DetailModifyPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
             onPressed: () {
-              isCreat
-                  ? userService
-                      .removeItem(index: index)
-                      .then(Navigator.pop(context))
-                  : Navigator.pop(context);
-              print("object");
+              if (widget.isCreat == true) {
+                userService.removeItem(index: widget.index);
+                Navigator.pop(context); // Close the dialog
+              } else {
+                Navigator.pop(context); // Close the dialog
+              }
             },
             icon: Icon(
               Icons.backspace,
@@ -58,15 +77,16 @@ class DetailModifyPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      //원래는 디테일페이지로 가야하는데 경로확인하려고 수정페이지로 감
-                      builder: (_) => MyPage(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     //원래는 디테일페이지로 가야하는데 경로확인하려고 수정페이지로 감
+                  //     builder: (_) => MyPage(),
+                  //   ),
+                  // );
+                  Navigator.pop(context);
                   userService.updateItem(
-                      index: index,
+                      index: widget.index,
                       address: addressController.text,
                       date: dateController.text,
                       emailaddress: emailaddressController.text,
@@ -119,26 +139,10 @@ class DetailModifyPage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 25,
-                ),
-                Text(
-                  "이름",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Icon(
-                  Icons.edit,
-                  size: 25,
-                  color: ColorList().gray,
-                )
-              ],
+            SizedBox(
+              width: 25,
             ),
+
             SizedBox(
               height: 20,
             ),
@@ -148,6 +152,23 @@ class DetailModifyPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      "이름",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "이름을 입력하세요",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
                     Text(
                       "닉네임",
                       style: TextStyle(
@@ -159,6 +180,9 @@ class DetailModifyPage extends StatelessWidget {
                       height: 4,
                     ),
                     TextField(
+                      onChanged: (value) {
+                        user.nickname;
+                      },
                       controller: nicknameController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),

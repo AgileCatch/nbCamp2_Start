@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/main.dart';
 
-class ImageAddPAge extends StatelessWidget {
-  const ImageAddPAge({super.key});
+class ImageAddPage extends StatelessWidget {
+  const ImageAddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,7 @@ class ImageAddPAge extends StatelessWidget {
               size: 30,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   // MaterialPageRoute(builder: (_) => MyHomePage(index: null, isCreat: null,)),
-              // );
+              Navigator.pop(context);
             },
           ),
         ),
