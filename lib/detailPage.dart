@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
+import 'package:introduce_myself/image_AddPage.dart';
 import 'package:introduce_myself/main.dart';
 import 'package:provider/provider.dart';
 
@@ -92,10 +93,10 @@ class _MyPageState extends State<MyPage> {
       return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (_) => ImageAddPage()), //플로팅 버튼
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => ImageAddPage()), //플로팅 버튼
+            );
           },
           child: Icon(Icons.add),
         ),
