@@ -1,19 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detail_ModifyPage.dart';
-import 'package:introduce_myself/image_AddPage.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'GridView Example',
-      home: MyPage(),
-    );
-  }
-}
 
 class MyPage extends StatefulWidget {
   @override
@@ -91,10 +76,10 @@ class _MyPageState extends State<MyPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => ImageAddPage()), //플로팅 버튼
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (_) => ImageAddPage()), //플로팅 버튼
+          // );
         },
         child: Icon(Icons.add),
       ),
@@ -127,10 +112,10 @@ class _MyPageState extends State<MyPage> {
               ),
               onPressed: () {
                 print('back button is clicked');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => DetailModifyPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (_) => DetailModifyPage(index: )),
+                // );
                 print('modify button is clicked');
               },
             ),

@@ -1,24 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/detailPage.dart';
+import 'package:introduce_myself/main.dart';
 
-void main() {
-  runApp(ImageAddPage());
-}
-
-class ImageAddPage extends StatelessWidget {
-  const ImageAddPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyAddPage(),
-    );
-  }
-}
-
-class MyAddPage extends StatelessWidget {
-  const MyAddPage({super.key});
+class ImageAddPAge extends StatelessWidget {
+  const ImageAddPAge({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +21,7 @@ class MyAddPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => MyApp()),
+                MaterialPageRoute(builder: (_) => MyHomePage()),
               );
             },
           ),
