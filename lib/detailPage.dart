@@ -98,10 +98,8 @@ class MyPage extends StatelessWidget {
             ),
             onPressed: () {
               print('back button is clicked');
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
-              );
+              Navigator.pop(context // 메인화면으로 이동
+                  );
             },
           ),
         ),
