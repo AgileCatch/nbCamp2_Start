@@ -5,21 +5,21 @@ import 'package:introduce_myself/image_Modifypage.dart';
 
 import 'detailPage.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ImageDetailPage(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: ImageDetailPage(),
+//     );
+//   }
+// }
 
 // 홈 페이지
 class ImageDetailPage extends StatefulWidget {
@@ -38,10 +38,10 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
         leading: IconButton(
           onPressed: () {
             // 버튼 클릭시 이전 페이지로 이동
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => MyPage()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (_) => DetailPage()),
+            // );
           },
           icon:
               Icon(Icons.backspace, color: Color.fromARGB(255, 136, 136, 136)),

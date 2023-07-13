@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/main.dart';
+import 'package:introduce_myself/service/servicePage.dart';
+import 'package:provider/provider.dart';
 
 import 'image_DetailPage.dart';
 
-void main() => runApp(MyApp());
+// class DetailPage extends StatefulWidget {
+//   const DetailPage({super.key});
 
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'detailPage',
-      home: MyPage(),
-    );
-  }
-}
+//   @override
+//   State<DetailPage> createState() => _DetailPageState();
+// }
 
-class MyPage extends StatelessWidget {
+// class _DetailPageState extends State<DetailPage> {
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'detailPage',
+//       home: MyPage(),
+//     );
+//   }
+// }
+
+class DetailPage extends StatelessWidget {
+  DetailPage({super.key, required this.index});
+
+  final int index;
+
+  TextEditingController contentController = TextEditingController();
+
   Widget build(BuildContext context) {
+    UserService userService = context.read<UserService>();
+    User user = userService.cardList[index];
     final nicknameTextSpan = TextSpan(
       text: ("닉네임"),
       style: TextStyle(
@@ -106,11 +121,14 @@ class MyPage extends StatelessWidget {
             ),
             onPressed: () {
               print('back button is clicked');
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (_) => DetailModifyPage(
+              //             index: memoList.length - 1,
+              //             memoList: memoList,
+              //           )), //수정페이지로 이동
+              // );
               print('modify button is clicked');
             },
           ),
@@ -141,7 +159,7 @@ class MyPage extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    '이   름',
+                    contentController as String,
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -258,7 +276,6 @@ class MyPage extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: '대한민국',
                           style: TextStyle(
                             fontSize: 20,
                             letterSpacing: 3,

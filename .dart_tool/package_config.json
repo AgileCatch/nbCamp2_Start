@@ -140,6 +140,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -150,6 +156,12 @@
       "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/pointycastle-3.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/soohyun/.pub-cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -212,7 +224,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-12T18:25:09.573514Z",
+  "generated": "2023-07-13T05:41:57.839593Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }
