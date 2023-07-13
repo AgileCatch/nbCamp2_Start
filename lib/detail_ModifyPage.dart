@@ -33,7 +33,7 @@ class DetailModifyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //use Service에 있는 내용- 프로바이더 적용
     UserService userService = context.read<UserService>();
-    User user = userService.cardList[index];
+    User user = userService.userList[index];
 
     return Scaffold(
       backgroundColor: ColorList().background,

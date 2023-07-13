@@ -5,8 +5,13 @@ import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:introduce_myself/service/servicePage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+late SharedPreferences prefs;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(
       providers: [
@@ -86,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserService>(builder: (context, userService, child) {
-      List<User> cardList = userService.cardList;
+      List<User> cardList = userService.userList;
       return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorList().background, //앱바 색 지정
