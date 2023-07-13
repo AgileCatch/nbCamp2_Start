@@ -46,7 +46,14 @@ class MyAddPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
+                  ),
+                );
+              },
               icon: Icon(
                 Icons.check,
                 color: Colors.grey,
@@ -89,6 +96,7 @@ class MyAddPage extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: "내용을 입력하세요.",
                   ),
+                  autofocus: true,
                   maxLines: null,
                 ),
               ),

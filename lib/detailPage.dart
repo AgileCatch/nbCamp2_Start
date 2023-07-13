@@ -24,10 +24,12 @@ class _MyPageState extends State<MyPage> {
   List<String> gridItems = ['Item 1', 'Item 2', 'Item 3'];
 
   void addItemToGrid() {
-    setState(() {
-      int itemCount = gridItems.length;
-      gridItems.add('Item ${itemCount + 1}'); //그리드 추가
-    });
+    setState(
+      () {
+        int itemCount = gridItems.length;
+        gridItems.add('Item ${itemCount + 1}');
+      },
+    );
   }
 
   Widget build(BuildContext context) {
