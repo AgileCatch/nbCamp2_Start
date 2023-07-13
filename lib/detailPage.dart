@@ -11,7 +11,7 @@ class _MyPageState extends State<MyPage> {
   void addItemToGrid() {
     setState(() {
       int itemCount = gridItems.length;
-      gridItems.add('Item ${itemCount + 1}');
+      gridItems.add('Item ${itemCount + 1}'); //그리드 추가
     });
   }
 
@@ -78,7 +78,7 @@ class _MyPageState extends State<MyPage> {
         onPressed: () {
           // Navigator.push(
           //   context,
-          //   MaterialPageRoute(builder: (_) => ImageAddPage()),
+          //   MaterialPageRoute(builder: (_) => ImageAddPage()), //플로팅 버튼
           // );
         },
         child: Icon(Icons.add),
