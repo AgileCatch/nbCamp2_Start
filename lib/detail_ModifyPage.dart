@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/Util/showToast.dart';
+import 'package:introduce_myself/detailPage.dart';
 import 'package:introduce_myself/service/servicePage.dart';
 import 'package:provider/provider.dart';
 
 class DetailModifyPage extends StatelessWidget {
-  DetailModifyPage({super.key, required this.index});
+  DetailModifyPage({super.key, required this.index, required this.isCreat});
 
   final int index;
+  final bool isCreat;
 
   // final List<String> memoList;
   // final int index;
@@ -20,20 +22,11 @@ class DetailModifyPage extends StatelessWidget {
   final TextEditingController mbtiController = TextEditingController();
   final TextEditingController hobbyController = TextEditingController();
 
-  // nameController.text = userList.name;
-  // nicknameController.text = userList.nickname;
-  // dateController.text = userList.date;
-  // emailaddressController.text = userList.emailaddress;
-  // addressController.text = userList.address;
-  // likeController.text = userList.like;
-  // mbtiController.text = userList.mbti;
-  // hobbyController.text = userList.hobby;
-
   @override
   Widget build(BuildContext context) {
     //use Service에 있는 내용- 프로바이더 적용
     UserService userService = context.read<UserService>();
-    User user = userService.cardList[index];
+    User user = userService.userList[index];
 
     return Scaffold(
       backgroundColor: ColorList().background,
@@ -45,7 +38,11 @@ class DetailModifyPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              isCreat
+                  ? userService
+                      .removeItem(index: index)
+                      .then(Navigator.pop(context))
+                  : Navigator.pop(context);
               print("object");
             },
             icon: Icon(
@@ -61,15 +58,24 @@ class DetailModifyPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: IconButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (_) => DetailPage(
-                  //             // index: memoList.length,
-                  //             // memoList: memoList,
-                  //           )),
-                  // );
-                  // showToast('저장되었습니다');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      //원래는 디테일페이지로 가야하는데 경로확인하려고 수정페이지로 감
+                      builder: (_) => MyPage(),
+                    ),
+                  );
+                  userService.updateItem(
+                      index: index,
+                      address: addressController.text,
+                      date: dateController.text,
+                      emailaddress: emailaddressController.text,
+                      hobby: hobbyController.text,
+                      like: likeController.text,
+                      mbti: mbtiController.text,
+                      name: nameController.text,
+                      nickname: nicknameController.text);
+                  showToast('저장되었습니다');
                 },
                 icon: Icon(
                   Icons.check,
@@ -120,9 +126,9 @@ class DetailModifyPage extends StatelessWidget {
                   width: 25,
                 ),
                 Text(
-                  "푸 바 오",
+                  "이름",
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
