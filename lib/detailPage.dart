@@ -88,41 +88,43 @@ class MyPage extends StatelessWidget {
         title: Text(''),
         elevation: 0,
         backgroundColor: Colors.white,
-        leadingWidth: 65,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 35,
-          ),
-          onPressed: () {
-            print('back button is clicked');
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
-            );
-          },
-        ),
-        actions: [
-          IconButton(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: IconButton(
             icon: Icon(
-              Icons.edit,
-              color: Colors.black,
-              size: 35,
+              Icons.backspace,
+              color: const Color.fromARGB(255, 136, 136, 136),
+              size: 30,
             ),
             onPressed: () {
               print('back button is clicked');
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                MaterialPageRoute(builder: (_) => MyHomePage()), // 메인화면으로 이동
               );
-              print('modify button is clicked');
             },
           ),
-          SizedBox(
-            width: 14,
-          )
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              icon: Icon(
+                Icons.edit,
+                color: const Color.fromARGB(255, 136, 136, 136),
+                size: 30,
+              ),
+              onPressed: () {
+                print('back button is clicked');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => DetailModifyPage()), //수정페이지로 이동
+                );
+                print('modify button is clicked');
+              },
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -157,7 +159,7 @@ class MyPage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -178,7 +180,7 @@ class MyPage extends StatelessWidget {
                 SizedBox(height: 0),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3),
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -212,7 +214,7 @@ class MyPage extends StatelessWidget {
                   height: 0,
                 ),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   child: RichText(
                     text: TextSpan(
@@ -245,7 +247,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -277,7 +279,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -309,7 +311,7 @@ class MyPage extends StatelessWidget {
                 ),
                 SizedBox(height: 0),
                 Container(
-                  color: const Color.fromARGB(255, 136, 136, 136),
+                  color: const Color.fromARGB(255, 209, 208, 208),
                   child: RichText(
                     text: TextSpan(
                       children: [
@@ -343,7 +345,7 @@ class MyPage extends StatelessWidget {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 136, 136, 136),
+                    color: const Color.fromARGB(255, 209, 208, 208),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
