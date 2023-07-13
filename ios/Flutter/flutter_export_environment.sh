@@ -3,7 +3,7 @@
 export "FLUTTER_ROOT=/Users/soohyun/Documents/flutter"
 export "FLUTTER_APPLICATION_PATH=/Users/soohyun/Documents/GitHub/nbCamp2_Start"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=/Users/soohyun/Documents/GitHub/nbCamp2_Start/lib/detailPage.dart"
+export "FLUTTER_TARGET=/Users/soohyun/Documents/GitHub/nbCamp2_Start/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
