@@ -85,7 +85,7 @@ class MyPage extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.backspace,
-              color: Colors.black,
+              color: const Color.fromARGB(255, 136, 136, 136),
               size: 35,
             ),
             onPressed: () {
@@ -103,7 +103,7 @@ class MyPage extends StatelessWidget {
             child: IconButton(
               icon: Icon(
                 Icons.edit,
-                color: Colors.black,
+                color: const Color.fromARGB(255, 136, 136, 136),
                 size: 35,
               ),
               onPressed: () {
