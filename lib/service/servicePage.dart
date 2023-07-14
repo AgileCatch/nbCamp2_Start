@@ -69,7 +69,7 @@ class UserService extends ChangeNotifier {
       address: "광주 광역시",
       like: "맛집탐방, 고양이",
       mbti: "ESFP",
-      hobby: "사진찍기, 노래방, 게임하기, 운동하기",
+      hobby: "사진찍기, 게임하기, 운동하기",
     ),
     User(
       photo:
@@ -81,7 +81,7 @@ class UserService extends ChangeNotifier {
       address: "서울 특별시",
       like: "팬더, 강아지, 민트초코, T1",
       mbti: "INFP",
-      hobby: "온라인게임, 보드게임, 롤경기 보기, ",
+      hobby: "온라인게임, 보드게임, 롤경기 보기",
     ),
     User(
       photo:
@@ -93,7 +93,7 @@ class UserService extends ChangeNotifier {
       address: "전북 익산시",
       like: "혼자 영화나 애니보기, 동물",
       mbti: "INFP",
-      hobby: "게임,  노래방, 요리, 맛집탐방",
+      hobby: "게임, 노래방, 요리, 맛집탐방",
     ),
     User(
       photo:

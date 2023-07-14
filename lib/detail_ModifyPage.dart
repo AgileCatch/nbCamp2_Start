@@ -134,17 +134,17 @@ class _DetailModifyPageState extends State<DetailModifyPage> {
                   onTap: _pickImage,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(user.photo),
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: ColorList().gray,
                     radius: 100,
                   ),
                 ),
                 Positioned(
-                  bottom: 0,
-                  right: 0,
+                  bottom: 70,
+                  right: 70,
                   child: Icon(
                     Icons.add_a_photo,
                     size: 60,
-                    color: ColorList().gray,
+                    color: ColorList().background,
                   ),
                 ),
               ],
