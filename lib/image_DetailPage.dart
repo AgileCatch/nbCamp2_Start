@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/image_Modifypage.dart';
 
+import 'Util/colorList.dart';
+
 class ImageDetailPage extends StatefulWidget {
   const ImageDetailPage({Key? key}) : super(key: key);
 
@@ -74,6 +76,7 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
           ),
         ],
       ),
+      backgroundColor: ColorList().background, //앱바 색 지정
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Container(
@@ -84,7 +87,7 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                   width: 200,
                   height: 60,
                   margin: EdgeInsets.only(
-                    right: 250,
+                    right: 150,
                   ),
                   //원하는 자리로 배치시키고 싶을 땐 margin을 이용하자!
                   child: Row(

@@ -291,7 +291,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             context,
                             MaterialPageRoute(
                               //원래는 디테일페이지로 가야하는데 경로확인하려고 수정페이지로 감
-                              builder: (_) => MyPage(),
+                              builder: (_) => MyPage(index: index),
                             ),
                           );
                           if (user.name.isEmpty) {
