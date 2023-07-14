@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/main.dart';
 
-class ImageAddPAge extends StatelessWidget {
-  const ImageAddPAge({super.key});
+class ImageAddPage extends StatelessWidget {
+  const ImageAddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +15,12 @@ class ImageAddPAge extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.backspace,
-              color: Colors.grey,
+              color: const Color.fromARGB(255, 136, 136, 136),
               size: 30,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   // MaterialPageRoute(builder: (_) => MyHomePage(index: null, isCreat: null,)),
-              // );
+              print('back button is clicked');
+              Navigator.pop(context);
             },
           ),
         ),

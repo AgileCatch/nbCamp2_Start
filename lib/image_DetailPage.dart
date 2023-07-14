@@ -14,16 +14,17 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
+          icon: Icon(
+            Icons.backspace,
+            color: const Color.fromARGB(255, 136, 136, 136),
+            size: 30,
+          ),
           onPressed: () {
-            // 버튼 클릭시 이전 페이지로 이동
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (_) => DetailPage()),
-            // );
+            print('back button is clicked');
+            Navigator.pop(context);
           },
-          icon:
-              Icon(Icons.backspace, color: Color.fromARGB(255, 136, 136, 136)),
         ),
         actions: [
           IconButton(

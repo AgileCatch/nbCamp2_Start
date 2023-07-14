@@ -28,6 +28,7 @@ class _ImageModifyPageState extends State<ImageModifyPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
           onPressed: () {
             // 버튼 클릭시 이전 페이지로 이동
