@@ -15,10 +15,11 @@ class ImageAddPage extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.backspace,
-              color: Colors.grey,
+              color: const Color.fromARGB(255, 136, 136, 136),
               size: 30,
             ),
             onPressed: () {
+              print('back button is clicked');
               Navigator.pop(context);
             },
           ),
