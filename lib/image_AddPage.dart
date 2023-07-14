@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:introduce_myself/main.dart';
 
+import 'Util/colorList.dart';
+
 class ImageAddPage extends StatelessWidget {
   const ImageAddPage({super.key});
 
@@ -38,6 +40,7 @@ class ImageAddPage extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: ColorList().background, //앱바 색 지정
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Container(

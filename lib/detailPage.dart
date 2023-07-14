@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:provider/provider.dart';
+import 'Util/colorList.dart';
 import 'image_AddPage.dart';
 import 'image_DetailPage.dart';
 import 'service/servicePage.dart';
 
 class MyPage extends StatefulWidget {
+  MyPage({required this.index});
   @override
   _MyPageState createState() => _MyPageState();
+  final int index;
 }
 
-class MyApp extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'GridView Example',
-      home: MyPage(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'GridView Example',
+//       home: MyPage(index: 0),
+//     );
+//   }
+// }
 
 class _MyPageState extends State<MyPage> {
   List<String> gridItems = ['Item 1', 'Item 2', 'Item 3'];
@@ -32,9 +34,16 @@ class _MyPageState extends State<MyPage> {
   }
 
   Widget build(BuildContext context) {
-    return Consumer<UserService>(builder: (context, userService, child) {
-      //userService로부터 userList가져오기
-      List<User> userList = userService.userList;
+    return Consumer<UserService>(builder: (
+      context,
+      userService,
+      child,
+    ) {
+      User user = userService.userList[widget.index];
+      var size = MediaQuery.of(context).size;
+      final double itemHeight = size.height / 8;
+      final double itemWidth = size.width / 2;
+
       final nicknameTextSpan = TextSpan(
         text: ("닉네임"),
         style: TextStyle(
@@ -94,11 +103,7 @@ class _MyPageState extends State<MyPage> {
 
       return Consumer<UserService>(builder: (context, userService, child) {
         List<User> userList = userService.userList;
-
-        var size = MediaQuery.of(context).size;
-
-        final double itemHeight = size.height / 8;
-        final double itemWidth = size.width / 2;
+        User user = userService.userList[widget.index];
 
         return Scaffold(
           floatingActionButton: FloatingActionButton(
@@ -144,7 +149,7 @@ class _MyPageState extends State<MyPage> {
                       context,
                       MaterialPageRoute(
                           builder: (_) => DetailModifyPage(
-                                index: userList.length - 1,
+                                index: widget.index,
                                 isCreat: false,
                               )),
                     );
@@ -155,318 +160,314 @@ class _MyPageState extends State<MyPage> {
               ),
             ],
           ),
-          body: ListView.builder(
-            itemCount: userList.length,
-            itemBuilder: (context, index) {
-              User user = userList[index];
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+          backgroundColor: ColorList().background, //앱바 색 지정
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp',
+                    ),
+                    backgroundColor: Colors.transparent,
+                    radius: 100,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    user.name,
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
                     children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(
-                          'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp',
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.star),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            nicknameTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.nickname,
+                              style: TextStyle(
+                                fontSize: 20,
+                                letterSpacing: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
-                        backgroundColor: Colors.transparent,
-                        radius: 100,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        user.name,
-                        style: TextStyle(
-                            fontSize: 40, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.star),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                nicknameTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.nickname,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    letterSpacing: 3,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.celebration),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                birthdayTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.date,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    letterSpacing: 3,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.alternate_email),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                emailTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.emailaddress,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.public),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                locationTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.address,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    letterSpacing: 3,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.info_outline),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                mbtiTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.mbti,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    letterSpacing: 3,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.favorite),
-                                ),
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 10,
-                                  ),
-                                ),
-                                favoriteTextSpan,
-                                WidgetSpan(
-                                  child: SizedBox(
-                                    width: 20,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: user.like,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    letterSpacing: 3,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(30),
-                                bottomRight: Radius.circular(30),
-                              ),
-                            ),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  WidgetSpan(
-                                    child: Icon(Icons.star),
-                                  ),
-                                  WidgetSpan(
-                                    child: SizedBox(
-                                      width: 10,
-                                    ),
-                                  ),
-                                  hobbyTextSpan,
-                                  WidgetSpan(
-                                    child: SizedBox(
-                                      width: 20,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: user.hobby,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      letterSpacing: 3,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 0),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 1,
-                        childAspectRatio: (itemWidth / itemHeight),
-                        scrollDirection: Axis.vertical,
-                        children: List.generate(gridItems.length, (index) {
-                          return InkWell(
-                            onTap: () {
-                              //사진 누르면 ImageDetailPage로 이동
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => ImageDetailPage()),
-                              );
-                            },
-                            child: Row(
-                              children: [
-                                Image.network(
-                                  'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                                  width: 200,
-                                  height: 200,
-                                  fit: BoxFit.fill,
-                                ),
-                                Spacer(),
-                                Image.network(
-                                  'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
-                                  width: 200,
-                                  height: 200,
-                                  fit: BoxFit.fill,
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
                       ),
                     ],
                   ),
-                ),
-              );
-            },
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.celebration),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            birthdayTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.date,
+                              style: TextStyle(
+                                fontSize: 20,
+                                letterSpacing: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.alternate_email),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            emailTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.emailaddress,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.public),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            locationTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.address,
+                              style: TextStyle(
+                                fontSize: 20,
+                                letterSpacing: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.info_outline),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            mbtiTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.mbti,
+                              style: TextStyle(
+                                fontSize: 20,
+                                letterSpacing: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.favorite),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 10,
+                              ),
+                            ),
+                            favoriteTextSpan,
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: user.like,
+                              style: TextStyle(
+                                fontSize: 20,
+                                letterSpacing: 3,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              WidgetSpan(
+                                child: Icon(Icons.star),
+                              ),
+                              WidgetSpan(
+                                child: SizedBox(
+                                  width: 10,
+                                ),
+                              ),
+                              hobbyTextSpan,
+                              WidgetSpan(
+                                child: SizedBox(
+                                  width: 20,
+                                ),
+                              ),
+                              TextSpan(
+                                text: user.hobby,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  letterSpacing: 3,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 0),
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    crossAxisCount: 1,
+                    childAspectRatio: (itemWidth / itemHeight),
+                    scrollDirection: Axis.vertical,
+                    children: List.generate(gridItems.length, (index) {
+                      return InkWell(
+                        onTap: () {
+                          //사진 누르면 ImageDetailPage로 이동
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => ImageDetailPage()),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Image.network(
+                              'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                              width: 180,
+                              height: 180,
+                              fit: BoxFit.fill,
+                            ),
+                            Spacer(),
+                            Image.network(
+                              'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                              width: 180,
+                              height: 180,
+                              fit: BoxFit.fill,
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       });
