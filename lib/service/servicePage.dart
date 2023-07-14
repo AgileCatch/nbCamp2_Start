@@ -59,7 +59,66 @@ class UserService extends ChangeNotifier {
   }
 
   List<User> userList = [
-    //2개의 카드 초기화해줬음
+    User(
+      photo:
+          "https://cdn.newspenguin.com/news/photo/202306/14323_44808_3812.jpg",
+      name: "김영현",
+      nickname: "coffeeMaster",
+      date: "2000-05-25",
+      emailaddress: "agilecatch@gmail.com",
+      address: "광주 광역시",
+      like: "맛집탐방, 고양이",
+      mbti: "ESFP",
+      hobby: "사진찍기, 노래방, 게임하기, 운동하기",
+    ),
+    User(
+      photo:
+          "https://cdn.newspenguin.com/news/photo/202306/14323_44795_920.jpg",
+      name: "서수현",
+      nickname: "joye",
+      date: "1993-01-19",
+      emailaddress: "missu0119@gmail.com",
+      address: "서울 특별시",
+      like: "팬더, 강아지, 민트초코, T1",
+      mbti: "INFP",
+      hobby: "온라인게임, 보드게임, 롤경기 보기, ",
+    ),
+    User(
+      photo:
+          "https://cdn.newspenguin.com/news/photo/202306/14323_44801_2456.jpg",
+      name: "정도균",
+      nickname: "Ducnan",
+      date: "1997-06-02",
+      emailaddress: "wjdehrbs123@gmail.com",
+      address: "전북 익산시",
+      like: "혼자 영화나 애니보기, 동물",
+      mbti: "INFP",
+      hobby: "게임,  노래방, 요리, 맛집탐방",
+    ),
+    User(
+      photo:
+          "https://cdn.newspenguin.com/news/photo/202306/14323_44809_4046.jpg",
+      name: "문서연",
+      nickname: "SeoYeon",
+      date: "1996-12-23",
+      emailaddress: "mbb1223h@gmail.com",
+      address: "광주 광역시",
+      like: "바다",
+      mbti: "INTJ",
+      hobby: "피아노",
+    ),
+    User(
+      photo:
+          "https://image.newsis.com/2021/07/20/NISI20210720_0017686240_web.jpg?rnd=20210720120731",
+      name: "장재원",
+      nickname: "janga0710",
+      date: "1997-10-19",
+      emailaddress: "janga9710@naver.com",
+      address: "경북 구미시",
+      like: "게임, 노래방, 영화",
+      mbti: "INFP",
+      hobby: "유튜브보기, 스팀게임, 산책",
+    ),
   ];
 
   createItem({
