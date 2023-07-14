@@ -138,12 +138,12 @@ class UserService extends ChangeNotifier {
   }
 
   loadUserList() {
-    String? jsonString = prefs.getString('userJsonList');
+    String? jsonString = prefs.getString('userList');
     // '[{"content": "1"}, {"content": "2"}]'
 
     if (jsonString == null) return; // null 이면 로드하지 않음
 
-    List userJsonList = jsonDecode(jsonString);
+    List userJsonList = jsonDecode(jsonString!);
     // [{"content": "1"}, {"content": "2"}]
 
     userList = userJsonList.map((json) => User.fromJson(json)).toList();

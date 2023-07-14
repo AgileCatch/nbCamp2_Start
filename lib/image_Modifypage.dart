@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'image_DetailPage.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 // 이미지 수정 및 저장 페이지
 class ImageModifyPage extends StatefulWidget {
