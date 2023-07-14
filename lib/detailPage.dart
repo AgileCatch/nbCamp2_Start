@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:introduce_myself/detail_ModifyPage.dart';
 import 'package:provider/provider.dart';
 import 'image_AddPage.dart';
@@ -93,6 +94,12 @@ class _MyPageState extends State<MyPage> {
 
       return Consumer<UserService>(builder: (context, userService, child) {
         List<User> userList = userService.userList;
+
+        var size = MediaQuery.of(context).size;
+
+        final double itemHeight = size.height / 8;
+        final double itemWidth = size.width / 2;
+
         return Scaffold(
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.grey,
@@ -343,9 +350,7 @@ class _MyPageState extends State<MyPage> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      SizedBox(height: 20),
                       Row(
                         children: [
                           RichText(
@@ -424,11 +429,13 @@ class _MyPageState extends State<MyPage> {
                       GridView.count(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
+                        crossAxisCount: 1,
+                        childAspectRatio: (itemWidth / itemHeight),
+                        scrollDirection: Axis.vertical,
                         children: List.generate(gridItems.length, (index) {
                           return InkWell(
                             onTap: () {
-//사진 누르면 ImageDetailPage로 이동
+                              //사진 누르면 ImageDetailPage로 이동
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -438,14 +445,18 @@ class _MyPageState extends State<MyPage> {
                             child: Row(
                               children: [
                                 Image.network(
-                                    'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                                    width: 180,
-                                    height: 200),
-                                Spacer(flex: 1),
+                                  'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.fill,
+                                ),
+                                Spacer(),
                                 Image.network(
-                                    'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
-                                    width: 180,
-                                    height: 200),
+                                  'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.fill,
+                                ),
                               ],
                             ),
                           );
