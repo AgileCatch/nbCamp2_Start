@@ -81,10 +81,10 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
             child: Column(
               children: [
                 Container(
-                  width: 200,
+                  width: 300,
                   height: 60,
                   margin: EdgeInsets.only(
-                    right: 250,
+                    right: 150,
                   ),
                   //원하는 자리로 배치시키고 싶을 땐 margin을 이용하자!
                   child: Row(
@@ -111,11 +111,11 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                 SizedBox(height: 10),
                 Container(
                   width: double.infinity,
-                  height: 300,
+                  height: 400,
                   child: Image.network(
                     "http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
                     width: double.infinity,
-                    height: 300,
+                    height: 400,
                   ),
                 ),
                 SizedBox(height: 0),

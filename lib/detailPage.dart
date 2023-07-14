@@ -387,7 +387,7 @@ class _MyPageState extends State<MyPage> {
                       Row(
                         children: [
                           Container(
-                            height: 200,
+                            height: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(30),
@@ -432,35 +432,38 @@ class _MyPageState extends State<MyPage> {
                         crossAxisCount: 1,
                         childAspectRatio: (itemWidth / itemHeight),
                         scrollDirection: Axis.vertical,
-                        children: List.generate(gridItems.length, (index) {
-                          return InkWell(
-                            onTap: () {
-                              //사진 누르면 ImageDetailPage로 이동
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => ImageDetailPage()),
-                              );
-                            },
-                            child: Row(
-                              children: [
-                                Image.network(
-                                  'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
-                                  width: 200,
-                                  height: 200,
-                                  fit: BoxFit.fill,
-                                ),
-                                Spacer(),
-                                Image.network(
-                                  'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
-                                  width: 200,
-                                  height: 200,
-                                  fit: BoxFit.fill,
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                        children: List.generate(
+                          gridItems.length,
+                          (index) {
+                            return InkWell(
+                              onTap: () {
+                                //사진 누르면 ImageDetailPage로 이동
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => ImageDetailPage()),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  Image.network(
+                                    'https://image.dongascience.com/Photo/2018/01/15156572291854.jpg',
+                                    width: 180,
+                                    height: 180,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  Spacer(),
+                                  Image.network(
+                                    'http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg',
+                                    width: 180,
+                                    height: 180,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:introduce_myself/main.dart';
 
 class ImageAddPage extends StatelessWidget {
   const ImageAddPage({super.key});
@@ -28,7 +27,9 @@ class ImageAddPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: Icon(
                 Icons.check,
                 color: Colors.grey,
@@ -39,43 +40,45 @@ class ImageAddPage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          margin: EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: Container(
                 decoration: BoxDecoration(
-                  // 이미지 추가부분 어떻게?
                   image: DecorationImage(
                     image: NetworkImage(
-                      "https://d2v80xjmx68n4w.cloudfront.net/members/portfolios/yirR71673678500.jpg",
+                      "http://news.samsungdisplay.com/wp-content/uploads/2018/08/8.jpg",
                     ),
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: 300, // 이미지 추가칸 설정
-                width: 100,
+                height: 300,
+                width: 360,
                 margin: EdgeInsets.fromLTRB(0, 20, 0, 60),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                ),
               ),
-              Container(
-                //텍스트 공간
-                height: null,
-                width: 10,
-                color: Colors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
                 child: TextField(
-                  style: TextStyle(fontSize: 25),
+                  controller: TextEditingController(),
                   decoration: InputDecoration(
-                    fillColor: Colors.blue,
                     border: InputBorder.none,
                     hintText: "내용을 입력하세요.",
+                  ),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
                   maxLines: null,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
