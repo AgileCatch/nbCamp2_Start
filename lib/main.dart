@@ -247,8 +247,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       //현재 사진파일은 안옮김 -> 조금 더 찾아봐야 할듯
                                       CircleAvatar(
-                                        backgroundImage: NetworkImage(
-                                            'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp'),
+                                        backgroundImage:
+                                            NetworkImage(user.photo),
                                         radius: 45,
                                         backgroundColor: ColorList().gray,
                                       ), //프로필 이미지크기

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:introduce_myself/Util/colorList.dart';
 import 'package:introduce_myself/Util/showToast.dart';
 import 'package:introduce_myself/service/servicePage.dart';
@@ -31,6 +34,19 @@ class _DetailModifyPageState extends State<DetailModifyPage> {
   final TextEditingController mbtiController = TextEditingController();
 
   final TextEditingController hobbyController = TextEditingController();
+
+  File? _image;
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      setState(() {
+        _image = File(pickedImage.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,12 +131,9 @@ class _DetailModifyPageState extends State<DetailModifyPage> {
               clipBehavior: Clip.none,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    showToast('message');
-                  },
+                  onTap: _pickImage,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp'),
+                    backgroundImage: NetworkImage(user.photo),
                     backgroundColor: Colors.transparent,
                     radius: 100,
                   ),

@@ -47,7 +47,7 @@ class _MyPageState extends State<MyPage> {
       final nicknameTextSpan = TextSpan(
         text: ("닉네임"),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -55,7 +55,7 @@ class _MyPageState extends State<MyPage> {
       final birthdayTextSpan = TextSpan(
         text: ('생년월일'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -63,7 +63,7 @@ class _MyPageState extends State<MyPage> {
       final emailTextSpan = TextSpan(
         text: ('이메일 주소'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -71,7 +71,7 @@ class _MyPageState extends State<MyPage> {
       final locationTextSpan = TextSpan(
         text: ('사는 곳'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -79,7 +79,7 @@ class _MyPageState extends State<MyPage> {
       final mbtiTextSpan = TextSpan(
         text: ('MBTI'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -87,7 +87,7 @@ class _MyPageState extends State<MyPage> {
       final favoriteTextSpan = TextSpan(
         text: ('좋아하는 것'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -95,7 +95,7 @@ class _MyPageState extends State<MyPage> {
       final hobbyTextSpan = TextSpan(
         text: ('취미'),
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -168,9 +168,7 @@ class _MyPageState extends State<MyPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://i.namu.wiki/i/R2EGUkNYi8b3OXJFs2GnVsZC_PZVDRr0h6ORhQEehb_wd7ekbXd0pCEnp1K6LPjpsyoEVktt8XbUVCKsNKGSr3MXOk8yfcdVsKhn8HITDW1XOEHZjmIQfcmXnD-YSDfBth2HSm3pfIruXlRvR_4tow.webp',
-                    ),
+                    backgroundImage: NetworkImage(user.photo),
                     backgroundColor: Colors.transparent,
                     radius: 100,
                   ),
@@ -202,7 +200,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.nickname,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 letterSpacing: 3,
                                 color: Colors.black,
                               ),
@@ -237,7 +235,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.date,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 letterSpacing: 3,
                                 color: Colors.black,
                               ),
@@ -272,7 +270,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.emailaddress,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 color: Colors.black,
                               ),
                             ),
@@ -306,7 +304,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.address,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 letterSpacing: 3,
                                 color: Colors.black,
                               ),
@@ -341,7 +339,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.mbti,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 letterSpacing: 3,
                                 color: Colors.black,
                               ),
@@ -376,7 +374,7 @@ class _MyPageState extends State<MyPage> {
                             TextSpan(
                               text: user.like,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 letterSpacing: 3,
                                 color: Colors.black,
                               ),
@@ -417,7 +415,7 @@ class _MyPageState extends State<MyPage> {
                               TextSpan(
                                 text: user.hobby,
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 15,
                                   letterSpacing: 3,
                                   color: Colors.black,
                                 ),
